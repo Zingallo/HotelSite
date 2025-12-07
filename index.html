@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Mutinta River Resort - Luxury Zambian Safari Experience</title>
-<link rel="stylesheet" href="/src/styles.css" />
+<link rel="stylesheet" href="src/styles.css" />
 </head>
 <body>
 <!-- Navigation -->
@@ -29,6 +29,196 @@
   </div>
 </nav>
 
+<!-- Booking Modal -->
+<div id="bookingModal" class="booking-modal">
+  <div class="booking-modal-content">
+    <button class="booking-close-btn">&times;</button>
+    
+    <div class="booking-header">
+      <span class="section-label">Reservation</span>
+      <h2 class="section-heading">Book Your Stay</h2>
+    </div>
+
+    <form id="bookingForm">
+      <div class="booking-steps">
+        <div class="booking-step active" data-step="1">
+          <div class="step-number">1</div>
+          <span>Room</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="booking-step" data-step="2">
+          <div class="step-number">2</div>
+          <span>Dates</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="booking-step" data-step="3">
+          <div class="step-number">3</div>
+          <span>Details</span>
+        </div>
+      </div>
+
+      <div class="form-step active" id="step1">
+        <h3>Select Your Accommodation</h3>
+        <div class="room-options">
+          <label class="room-option">
+            <input type="radio" name="selectedRoom" value="Classic Safari Tent" data-price="4250" required>
+            <div class="room-option-card">
+              <div class="room-option-info">
+                <strong>Classic Safari Tent</strong>
+                <span>Twin Beds • 2 Guests • 30m²</span>
+              </div>
+              <div class="room-option-price">ZMW 4,250<small>/night</small></div>
+            </div>
+          </label>
+          <label class="room-option">
+            <input type="radio" name="selectedRoom" value="Riverfront Chalet" data-price="6950">
+            <div class="room-option-card">
+              <div class="room-option-info">
+                <strong>Riverfront Chalet</strong>
+                <span>Queen Bed • 2 Guests • 40m²</span>
+              </div>
+              <div class="room-option-price">ZMW 6,950<small>/night</small></div>
+            </div>
+          </label>
+          <label class="room-option">
+            <input type="radio" name="selectedRoom" value="Luxury Tented Suite" data-price="8280">
+            <div class="room-option-card">
+              <div class="room-option-info">
+                <strong>Luxury Tented Suite</strong>
+                <span>King Bed • 2 Guests • 45m²</span>
+              </div>
+              <div class="room-option-price">ZMW 8,280<small>/night</small></div>
+            </div>
+          </label>
+          <label class="room-option">
+            <input type="radio" name="selectedRoom" value="Honeymoon Suite" data-price="14900">
+            <div class="room-option-card">
+              <div class="room-option-info">
+                <strong>Honeymoon Suite</strong>
+                <span>King Bed • 2 Guests • 55m²</span>
+              </div>
+              <div class="room-option-price">ZMW 14,900<small>/night</small></div>
+            </div>
+          </label>
+          <label class="room-option">
+            <input type="radio" name="selectedRoom" value="Family Safari Suite" data-price="18500">
+            <div class="room-option-card">
+              <div class="room-option-info">
+                <strong>Family Safari Suite</strong>
+                <span>2 Bedrooms • 4 Guests • 75m²</span>
+              </div>
+              <div class="room-option-price">ZMW 18,500<small>/night</small></div>
+            </div>
+          </label>
+          <label class="room-option">
+            <input type="radio" name="selectedRoom" value="Executive Bush Villa" data-price="25800">
+            <div class="room-option-card">
+              <div class="room-option-info">
+                <strong>Executive Bush Villa</strong>
+                <span>King Bed • 2 Guests • 85m²</span>
+              </div>
+              <div class="room-option-price">ZMW 25,800<small>/night</small></div>
+            </div>
+          </label>
+        </div>
+        <div class="form-buttons">
+          <button type="button" class="btn-next" onclick="goToStep(2)">Continue</button>
+        </div>
+      </div>
+
+      <div class="form-step" id="step2">
+        <h3>Select Your Dates</h3>
+        <div class="date-inputs">
+          <div class="input-group">
+            <label for="checkInDate">Check-in Date</label>
+            <input type="date" id="checkInDate" name="checkInDate" required placeholder="Select date">
+          </div>
+          <div class="input-group">
+            <label for="checkOutDate">Check-out Date</label>
+            <input type="date" id="checkOutDate" name="checkOutDate" required placeholder="Select date">
+          </div>
+          <div class="input-group">
+            <label for="numGuests">Number of Guests</label>
+            <select id="numGuests" name="numGuests" required>
+              <option value="">Select number of guests</option>
+              <option value="1">1 Guest</option>
+              <option value="2">2 Guests</option>
+              <option value="3">3 Guests</option>
+              <option value="4">4 Guests</option>
+            </select>
+          </div>
+        </div>
+        <div class="booking-summary" id="bookingSummary"></div>
+        <div class="form-buttons">
+          <button type="button" class="btn-back" onclick="goToStep(1)">Back</button>
+          <button type="button" class="btn-next" onclick="goToStep(3)">Continue</button>
+        </div>
+      </div>
+
+      <div class="form-step" id="step3">
+        <h3>Your Details</h3>
+        <div class="guest-inputs">
+          <div class="form-row">
+            <div class="input-group">
+              <label for="guestFirstName">First Name</label>
+              <input type="text" id="guestFirstName" name="guestFirstName" required>
+            </div>
+            <div class="input-group">
+              <label for="guestLastName">Last Name</label>
+              <input type="text" id="guestLastName" name="guestLastName" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input-group">
+              <label for="guestEmail">Email Address</label>
+              <input type="email" id="guestEmail" name="guestEmail" required>
+            </div>
+            <div class="input-group">
+              <label for="guestPhone">Phone Number</label>
+              <input type="tel" id="guestPhone" name="guestPhone" required>
+            </div>
+          </div>
+          <div class="input-group">
+            <label for="guestCountry">Country</label>
+            <select id="guestCountry" name="guestCountry" required>
+              <option value="">Select Country</option>
+              <option value="Zambia">Zambia</option>
+              <option value="Zimbabwe">Zimbabwe</option>
+              <option value="South Africa">South Africa</option>
+              <option value="Botswana">Botswana</option>
+              <option value="Namibia">Namibia</option>
+              <option value="United Kingdom">United Kingdom</option>
+              <option value="United States">United States</option>
+              <option value="Germany">Germany</option>
+              <option value="France">France</option>
+              <option value="Australia">Australia</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label for="specialRequests">Special Requests (Optional)</label>
+            <textarea id="specialRequests" name="specialRequests" rows="3" placeholder="Dietary requirements, special occasions, accessibility needs..."></textarea>
+          </div>
+        </div>
+        <div class="final-summary" id="finalSummary"></div>
+        <div class="form-buttons">
+          <button type="button" class="btn-back" onclick="goToStep(2)">Back</button>
+          <button type="submit" class="btn-submit">Complete Booking</button>
+        </div>
+      </div>
+    </form>
+
+    <div id="bookingSuccess" class="booking-success">
+      <div class="success-icon">✓</div>
+      <h2>Booking Confirmed!</h2>
+      <p>Thank you for choosing Mutinta River Resort</p>
+      <div id="confirmationDetails" class="confirmation-details"></div>
+      <p class="confirmation-note">A confirmation email has been sent to your email address.</p>
+      <button class="btn-primary close-success-btn">Close</button>
+    </div>
+  </div>
+</div>
+
 <!-- Hero Section -->
 <section id="hero" class="hero">
   <div class="hero-overlay"></div>
@@ -36,8 +226,8 @@
     <h1 class="hero-title">Discover Wild Luxury</h1>
     <p class="hero-subtitle">Where the Majestic River meets untamed elegance</p>
     <div class="hero-buttons">
-    <a href="#rooms" class="btn-secondary">Explore Rooms</a>
-    <a href="#experiences" class="btn-secondary">View Experiences</a>
+      <a href="#rooms" class="btn-primary">Explore Rooms</a>
+      <a href="#experiences" class="btn-secondary">View Experiences</a>
     </div>
   </div>
   <div class="scroll-indicator">
@@ -50,24 +240,18 @@
 <section id="about" class="about-section">
   <div class="container">
     <div class="about-grid">
-      
-      <!-- Updated image section -->
       <div class="about-image">
-        <img src="/public/images/room4.jpeg" alt="Luxury Tented Suite" class="room-image" />
+        <img src="public/images/room4.jpeg" alt="Luxury Tented Suite" class="room-image" />
       </div>
-
       <div class="about-content">
         <span class="section-label">Welcome</span>
         <h2 class="section-heading">A Sanctuary in the Wild</h2>
-
         <p class="about-text">
           Nestled on the banks of the mighty Kafue River, our lodge offers an intimate escape into Zambia's pristine wilderness. Experience the perfect harmony of luxury and nature, where every moment is crafted to create unforgettable memories.
         </p>
-
         <p class="about-text">
           From sunrise game drives to sunset river cruises, immerse yourself in the authentic African bush experience while enjoying world-class hospitality and comfort.
         </p>
-
         <div class="about-features">
           <div class="feature-item">
             <div class="feature-icon">🦁</div>
@@ -76,7 +260,6 @@
               <p>Big Five encounters</p>
             </div>
           </div>
-
           <div class="feature-item">
             <div class="feature-icon">🏕️</div>
             <div class="feature-text">
@@ -84,7 +267,6 @@
               <p>8 exclusive suites</p>
             </div>
           </div>
-
           <div class="feature-item">
             <div class="feature-icon">🍽️</div>
             <div class="feature-text">
@@ -92,14 +274,11 @@
               <p>Bush-to-table cuisine</p>
             </div>
           </div>
-
         </div>
       </div>
-
     </div>
   </div>
 </section>
-
 
 <!-- Rooms Section -->
 <section id="rooms" class="rooms-section">
@@ -109,11 +288,9 @@
     <p class="section-intro">Each suite is a private sanctuary, thoughtfully designed to blend seamlessly with the natural surroundings</p>
     
     <div class="rooms-grid">
-
-      <!-- 1. Luxury Tented Suite -->
       <div class="room-card">
         <div class="room-image-container">
-          <img src="/public/images/room1.jpg" alt="Luxury Tented Suite" class="room-image" />
+          <img src="public/images/room1.jpg" alt="Luxury Tented Suite" class="room-image" />
           <div class="room-badge">Popular</div>
         </div>
         <div class="room-content">
@@ -123,9 +300,7 @@
             <span>👥 2 Guests</span>
             <span>📏 45m²</span>
           </div>
-          <p class="room-description">
-            Spacious canvas suite with private deck overlooking the river. Features include outdoor shower, plunge pool, and panoramic wilderness views.
-          </p>
+          <p class="room-description">Spacious canvas suite with private deck overlooking the river. Features include outdoor shower, plunge pool, and panoramic wilderness views.</p>
           <ul class="room-amenities">
             <li>✓ Private plunge pool</li>
             <li>✓ Outdoor shower</li>
@@ -138,15 +313,14 @@
               <span class="price-amount">ZMW 8,280</span>
               <span class="price-period">/ night</span>
             </div>
-            <button class="book-button">Book Now</button>
+            <button class="book-button" data-room="Luxury Tented Suite" data-price="8280">Book Now</button>
           </div>
         </div>
       </div>
 
-      <!-- 2. Honeymoon Suite -->
       <div class="room-card">
         <div class="room-image-container">
-          <img src="/public/images/room2.jpg" alt="Honeymoon Tent" class="room-image" />
+          <img src="public/images/room2.jpg" alt="Honeymoon Tent" class="room-image" />
           <div class="room-badge premium">Premium</div>
         </div>
         <div class="room-content">
@@ -156,9 +330,7 @@
             <span>👥 2 Guests</span>
             <span>📏 55m²</span>
           </div>
-          <p class="room-description">
-            Our most romantic suite with exclusive private deck, oversized plunge pool, and uninterrupted river views. Perfect for celebrating special moments.
-          </p>
+          <p class="room-description">Our most romantic suite with exclusive private deck, oversized plunge pool, and uninterrupted river views. Perfect for celebrating special moments.</p>
           <ul class="room-amenities">
             <li>✓ Extra-large plunge pool</li>
             <li>✓ Double outdoor shower</li>
@@ -171,15 +343,14 @@
               <span class="price-amount">ZMW 14,900</span>
               <span class="price-period">/ night</span>
             </div>
-            <button class="book-button">Book Now</button>
+            <button class="book-button" data-room="Honeymoon Suite" data-price="14900">Book Now</button>
           </div>
         </div>
       </div>
 
-      <!-- 3. Family Safari Suite -->
       <div class="room-card">
         <div class="room-image-container">
-          <img src="/public/images/room11.jpg" alt="Family Suite" class="room-image" />
+          <img src="public/images/room11.jpg" alt="Family Suite" class="room-image" />
           <div class="room-badge">Family</div>
         </div>
         <div class="room-content">
@@ -189,9 +360,7 @@
             <span>👥 4 Guests</span>
             <span>📏 75m²</span>
           </div>
-          <p class="room-description">
-            Spacious two-bedroom suite perfect for families. Interconnected tents with shared living area and expansive deck for quality family time in the bush.
-          </p>
+          <p class="room-description">Spacious two-bedroom suite perfect for families. Interconnected tents with shared living area and expansive deck for quality family time in the bush.</p>
           <ul class="room-amenities">
             <li>✓ Two separate bedrooms</li>
             <li>✓ Family lounge area</li>
@@ -204,15 +373,14 @@
               <span class="price-amount">ZMW 18,500</span>
               <span class="price-period">/ night</span>
             </div>
-            <button class="book-button">Book Now</button>
+            <button class="book-button" data-room="Family Safari Suite" data-price="18500">Book Now</button>
           </div>
         </div>
       </div>
 
-      <!-- 4. Riverfront Chalet -->
       <div class="room-card">
         <div class="room-image-container">
-          <img src="/public/images/room13.jpg" alt="Riverfront Chalet" class="room-image" />
+          <img src="public/images/room13.jpg" alt="Riverfront Chalet" class="room-image" />
           <div class="room-badge premium">Scenic</div>
         </div>
         <div class="room-content">
@@ -222,9 +390,7 @@
             <span>👥 2 Guests</span>
             <span>📏 40m²</span>
           </div>
-          <p class="room-description">
-            Elevated chalet overlooking the Kafue River with sunrise views, handcrafted interiors, and a private balcony perfect for relaxation.
-          </p>
+          <p class="room-description">Elevated chalet overlooking the Kafue River with sunrise views, handcrafted interiors, and a private balcony perfect for relaxation.</p>
           <ul class="room-amenities">
             <li>✓ Private balcony</li>
             <li>✓ Riverfront sunrise view</li>
@@ -237,15 +403,14 @@
               <span class="price-amount">ZMW 6,950</span>
               <span class="price-period">/ night</span>
             </div>
-            <button class="book-button">Book Now</button>
+            <button class="book-button" data-room="Riverfront Chalet" data-price="6950">Book Now</button>
           </div>
         </div>
       </div>
 
-      <!-- 5. Executive Bush Villa -->
       <div class="room-card">
         <div class="room-image-container">
-          <img src="/public/images/room14.jpg" alt="Executive Bush Villa" class="room-image" />
+          <img src="public/images/room14.jpg" alt="Executive Bush Villa" class="room-image" />
           <div class="room-badge premium">Exclusive</div>
         </div>
         <div class="room-content">
@@ -255,9 +420,7 @@
             <span>👥 2 Guests</span>
             <span>📏 85m²</span>
           </div>
-          <p class="room-description">
-            Private standalone villa featuring a lounge, butler service, a large plunge pool, and sweeping uninterrupted wildlife views.
-          </p>
+          <p class="room-description">Private standalone villa featuring a lounge, butler service, a large plunge pool, and sweeping uninterrupted wildlife views.</p>
           <ul class="room-amenities">
             <li>✓ Private butler service</li>
             <li>✓ Oversized plunge pool</li>
@@ -270,15 +433,14 @@
               <span class="price-amount">ZMW 25,800</span>
               <span class="price-period">/ night</span>
             </div>
-            <button class="book-button">Book Now</button>
+            <button class="book-button" data-room="Executive Bush Villa" data-price="25800">Book Now</button>
           </div>
         </div>
       </div>
 
-      <!-- 6. Classic Safari Tent -->
       <div class="room-card">
         <div class="room-image-container">
-          <img src="/public/images/room12.jpg" alt="Classic Safari Tent" class="room-image" />
+          <img src="public/images/room12.jpg" alt="Classic Safari Tent" class="room-image" />
           <div class="room-badge">Value</div>
         </div>
         <div class="room-content">
@@ -288,9 +450,7 @@
             <span>👥 2 Guests</span>
             <span>📏 30m²</span>
           </div>
-          <p class="room-description">
-            A cozy, budget-friendly option offering an authentic safari feel with essential amenities and a peaceful private deck.
-          </p>
+          <p class="room-description">A cozy, budget-friendly option offering an authentic safari feel with essential amenities and a peaceful private deck.</p>
           <ul class="room-amenities">
             <li>✓ En-suite bathroom</li>
             <li>✓ Mosquito-proofed tent</li>
@@ -303,22 +463,19 @@
               <span class="price-amount">ZMW 4,250</span>
               <span class="price-period">/ night</span>
             </div>
-            <button class="book-button">Book Now</button>
+            <button class="book-button" data-room="Classic Safari Tent" data-price="4250">Book Now</button>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
-
 
 <!-- Experiences Section -->
 <section id="experiences" class="experiences-section">
   <div class="container">
     <span class="section-label">Adventures</span>
     <h2 class="section-heading">Safari Experiences</h2>
-    
     <div class="experiences-grid">
       <div class="experience-card">
         <div class="experience-icon">🚙</div>
@@ -361,9 +518,7 @@
       <div class="dining-content">
         <span class="section-label">Culinary</span>
         <h2 class="section-heading">Bush-to-Table Dining</h2>
-        <p class="dining-text">
-          Savor exceptional cuisine that celebrates local flavors and international finesse. Our chefs create memorable dining experiences from breakfast in the bush to elegant dinners under the stars.
-        </p>
+        <p class="dining-text">Savor exceptional cuisine that celebrates local flavors and international finesse. Our chefs create memorable dining experiences from breakfast in the bush to elegant dinners under the stars.</p>
         <div class="dining-options">
           <div class="dining-option">
             <h4>🍳 Bush Breakfasts</h4>
@@ -384,9 +539,7 @@
         </div>
       </div>
       <div class="dining-image">
-        <img src="/public/images/room5.jpg" alt="Luxury Tented Suite" class="room-image" />
-          <span>Dining Experience</span>
-        </div>
+        <img src="public/images/room5.jpg" alt="Dining Experience" class="room-image" />
       </div>
     </div>
   </div>
@@ -397,22 +550,21 @@
   <div class="container">
     <span class="section-label">Moments</span>
     <h2 class="section-heading">Experience Gallery</h2>
-    
     <div class="gallery-grid">
       <div class="gallery-item large">
-        <img src="/public/images/room6.jpg" alt="Wildlife" class="gallery-image" />
+        <img src="public/images/room6.jpg" alt="Wildlife" class="gallery-image" />
       </div>
       <div class="gallery-item large">
-        <img src="/public/images/room7.jpg" alt="Sunset" class="gallery-image" />
+        <img src="public/images/room7.jpg" alt="Sunset" class="gallery-image" />
       </div>
       <div class="gallery-item large">
-         <img src="/public/images/room9.jpg" alt="Lodge" class="gallery-image" />
+        <img src="public/images/room9.jpg" alt="Lodge" class="gallery-image" />
       </div>
       <div class="gallery-item large">
-         <img src="/public/images/room8.jpg" alt="Activities" class="gallery-image" />
+        <img src="public/images/room8.jpg" alt="Activities" class="gallery-image" />
       </div>
       <div class="gallery-item large">
-      <img src="/public/images/room10.jpg" alt="River View" class="gallery-image" />
+        <img src="public/images/room10.jpg" alt="River View" class="gallery-image" />
       </div>
     </div>
   </div>
@@ -426,7 +578,6 @@
         <span class="section-label">Get in Touch</span>
         <h2 class="section-heading">Plan Your Safari</h2>
         <p>Let us help you create the perfect Zambian safari experience</p>
-        
         <div class="contact-details">
           <div class="contact-item">
             <div class="contact-icon">📧</div>
@@ -451,25 +602,24 @@
           </div>
         </div>
       </div>
-      
       <div class="contact-form">
         <form id="inquiryForm">
           <div class="form-row">
-            <input type="text" placeholder="Full Name" required />
-            <input type="email" placeholder="Email Address" required />
+            <input type="text" name="fullName" placeholder="Full Name" required />
+            <input type="email" name="email" placeholder="Email Address" required />
           </div>
           <div class="form-row">
-            <input type="tel" placeholder="Phone Number" />
-            <input type="date" placeholder="Arrival Date" />
+            <input type="tel" name="phone" placeholder="Phone Number" />
+            <input type="date" name="arrivalDate" />
           </div>
-          <select required>
+          <select name="guests" required>
             <option value="">Number of Guests</option>
             <option value="1">1 Guest</option>
             <option value="2">2 Guests</option>
             <option value="3">3 Guests</option>
             <option value="4">4+ Guests</option>
           </select>
-          <textarea rows="4" placeholder="Tell us about your dream safari..."></textarea>
+          <textarea name="message" rows="4" placeholder="Tell us about your dream safari..."></textarea>
           <button type="submit" class="submit-btn">Send Inquiry</button>
         </form>
       </div>
@@ -518,6 +668,6 @@
   </div>
 </footer>
 
-<script type="module" src="/src/main.js"></script>
+<script src="src/main.js"></script>
 </body>
 </html>
